@@ -7,28 +7,20 @@
 // @lc code=start
 class Solution {
     public void moveZeroes(int[] nums) {
-        int f = 0, s = 0, tmp;       
-        while (f < nums.length) {
-            while (f < nums.length && nums[f] == 0) {
-                f += 1;
+        for (int fast = 0, slow = 0; fast < nums.length; fast++) {
+            if (nums[fast] != 0 && nums[slow] == 0) {
+                this.swap(nums, fast, slow);
             }
-            while ( s < f && nums[s] != 0 ){
-                s += 1;                
+            if (nums[slow] != 0) {
+                slow += 1;
             }
-
-            if (f == s) {
-                f += 1;
-            } else {
-                if (f < nums.length) {
-                    tmp = nums[f];
-                    nums[f] = nums[s];
-                    nums[s] = tmp;     
-                    f += 1;
-                    s += 1;
-                }
-            }       
         }
+    }
+
+    private void swap(int[] arr, int arg1, int arg2) {
+        int tmp = arr[arg1];
+        arr[arg1] = arr[arg2];
+        arr[arg2] = tmp;
     }
 }
 // @lc code=end
-

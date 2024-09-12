@@ -18,19 +18,20 @@ class Solution:
 
         products.sort()
         root = TrieNode()
-
         for p in products:
             node = root
-            for char in p:
-                node = node.children[char]
+            for c in p:
+                node = node.children[c]
                 node.addSuggestions(p)
+
+        result = []
         
-        result, node = [], root
+        node = root
         for c in searchWord:
             node = node.children[c]
-            result.append(node.suggestions)            
+            result.append(node.suggestions)
 
         return result
-            
-# @lc code=end
 
+
+# @lc code=end
